@@ -54,4 +54,8 @@ public class NewDataSet {
 	public String getMODELNAME() {
 		return MODELNAME;
 	}
+
+	public String getKPNUMBER() {
+		return KPNUMBER;
+	}
 }
