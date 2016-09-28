@@ -58,4 +58,8 @@ public class NewDataSet {
 	public String getKPNUMBER() {
 		return KPNUMBER;
 	}
+	
+	public String getSTATIONNO() {
+		return STATIONNO;
+	}
 }

@@ -31,6 +31,8 @@ public class Machine extends Observable {
 	public EMPType mlist;//送料人权限
 	public String 换料Model;
 	public String 换料面别;
+	public List<NewDataSet> SmtKpMaterialPreparation;//换班、换线料表信息；
+	public List<String> stationno;//料站表信息
 
 	
 
