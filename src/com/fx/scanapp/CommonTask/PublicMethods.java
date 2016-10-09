@@ -20,7 +20,7 @@ public class PublicMethods {
 		map.put("Json", str);
 		String dt;
 		try {
-			dt = (String) WEB.WebServices(map).toString().split("=")[1]
+			dt = (String) WEB.WebServices(map).toString().split("Result=")[1]
 					.split(";")[0];
 		} catch (Exception e) {
 			dt = null;

@@ -20,17 +20,18 @@ public class CLSChain extends ChainRespon{
 	}
 	@Override
 	public void build() {
-		TaskNode CLS = new CommandCHGKPCLS();
+		TaskNode CLS = new CommandCLS();
 		TaskNode checkpermission = new CommandCheckPermission();
 		TaskNode getMaterialPreparation = new CommandGetMaterialPreparation();
-		TaskNode getTrsnMasterial=new CommandGetTrsnMaterial();
-		TaskNode checkstation=new CommandCHGKPCLS();
+		TaskNode checkstation=new CommandStationno();
 		CLS.setTaskLevel(1);
 		checkpermission.setTaskLevel(2);
 		getMaterialPreparation.setTaskLevel(3);
+		checkstation.setTaskLevel(4);
 		head = CLS;
 		CLS.setnext(checkpermission);
 		checkpermission.setnext(getMaterialPreparation);
+		getMaterialPreparation.setnext(checkstation);
 		Machine.cmand_status = 1;
 		
 	}

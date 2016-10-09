@@ -3,11 +3,11 @@ package com.fx.scanapp.DateType;
 public interface ColParameter {
     // STATUS
     
-        int 正在备料=1;
-        int 备料完成=2;
-        int 正在换线=3;
-        int 已换线=4;
-        int 下线=5;
+        int 正在备料=0;
+        int 备料完成=1;
+        int 正在换线=2;
+        int 已换线=3;
+        int 下线=4;
 
     //CDATA
         int 缺料=0;

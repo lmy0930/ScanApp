@@ -45,7 +45,6 @@ public class XMLAnalyze {
 				parser.setInput(tInputStringStream, "UTF-8");
 				int eventType = parser.getEventType();
 				while (eventType != XmlPullParser.END_DOCUMENT) {
-					Log.v("XML", "running analyze2");
 					switch (eventType) {
 					case XmlPullParser.START_DOCUMENT:// 文档开始事件,可以进行数据初始化处理
 						list = new ArrayList<E>();
@@ -57,7 +56,7 @@ public class XMLAnalyze {
 						{
 							object = (E) cl.newInstance();
 							list.add(object);
-							Log.v("XML", "creat date");
+							Log.v("XML", "creat Table");
 							break;
 						}
 						else
@@ -75,6 +74,7 @@ public class XMLAnalyze {
 						}
 						break;
 					case XmlPullParser.END_TAG:// 结束元素事件
+						Log.v("XML", "end Analyze");
 						break;
 					}
 					eventType = parser.next();
@@ -88,6 +88,7 @@ public class XMLAnalyze {
 		} catch (Exception e) {
 		    throw new XMLException(e.toString());
 		}
+		Log.v("WEB","backSize========"+list.size());
 		return list;
 	}
 }

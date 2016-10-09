@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 
 import com.fx.scanapp.Machine;
 import com.fx.scanapp.TaskNode;
@@ -87,6 +88,7 @@ public class CommandTab extends TaskNode {
 									Machine.getInstance().masterID = msg;
 									Machine.getInstance().cmand_status = 0;
 									Machine.getInstance().clist=clist;
+									Log.v("WEB1", "xxxx====="+clist.size());
 								}
 							}
 						}

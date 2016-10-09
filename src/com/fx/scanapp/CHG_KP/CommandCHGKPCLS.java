@@ -60,7 +60,7 @@ public class CommandCHGKPCLS extends TaskNode implements ColParameter {
 					 {
 					   Machine.getInstance().nextdo ="换料完成 ";
 				       Machine.getInstance().nextdo +="\n请刷作业代码..";
-						Machine.cmand_status = 0;
+					   Machine.cmand_status = 0;
 					}
 				} else {
 					 Machine.getInstance().nextdo ="错误!!没有刷初始化命令,请重新开始..";

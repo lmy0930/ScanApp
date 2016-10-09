@@ -14,6 +14,17 @@ public class NewDataSet {
 	public void setWOID(String str) {
 		WOID = str;
 	}
+	public String getWOID() {
+		return WOID;
+	}
+	
+	public String getMASTERID(){
+		return MASTERID;
+	}
+	
+	public String getBOMVER(){
+		return BOMVER;
+	}
 
 	public void setPARTNUMBER(String str) {
 		PARTNUMBER = str;
@@ -61,5 +72,13 @@ public class NewDataSet {
 	
 	public String getSTATIONNO() {
 		return STATIONNO;
+	}
+	
+	public String getMACHINEID() {
+		return MACHINEID;
+	}
+	
+	public String getPARTNUMBER() {
+		return PARTNUMBER;
 	}
 }

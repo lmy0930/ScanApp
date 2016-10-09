@@ -35,20 +35,19 @@ public class ResponsibiltyFactory {
 			// 扫描到ACTION_Huanliao&&cm_status=0才产生子连
 			// 子连工作步骤0，2，3，4编号
 		}
-		// else
-		// if(action.equals("ACTION-CHG-CLS")&&Machine.getInstance().cmand_status==0)//产生换班子连
-		// {
-		// CLSChain clschain=new CLSChain();
-		// TaskChain=clschain.getChain();
-		// }
+		 else
+		 if(action.equals("ACTION-CHG-CLS")&&Machine.getInstance().cmand_status==0)//产生换班子连
+		 {
+		     CLSChain clschain=new CLSChain();
+		     TaskChain=clschain.getChain();
+		 }
 		// else
 		// if(action.equals("ACTION-CHG-WO")&&Machine.getInstance().cmand_status==0)//产生换线子连
 		// {
 		// InitChain initchain=new InitChain();
 		// TaskChain=initchain.getChain();
 		// }
-		else if (action.equals("ACTION-CHG-KP")
-				&& Machine.getInstance().cmand_status == 0)// 产生换料子连
+		else if ((action.equals("ACTION-CHG-KP")&& Machine.getInstance().cmand_status == 0))// 产生换料子连
 		{
 			KPChain kpchain = new KPChain();
 			TaskChain = kpchain.getChain();
