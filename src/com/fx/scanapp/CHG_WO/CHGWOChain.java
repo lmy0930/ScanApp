@@ -17,16 +17,16 @@ public class CHGWOChain extends ChainRespon{
 	
 	@Override
 	public void build() {
-		TaskNode CLS = new CommandCLS();
+		TaskNode CHGWO = new CommandCHGWO();
 		TaskNode checkpermission = new CommandCheckPermission();
 		TaskNode getMaterialPreparationchgwo = new CommandGetMaterialPreparationCHGWO();
 		TaskNode checkstationchgwo=new CommandStationnoCHGWO();
-		CLS.setTaskLevel(1);
+		CHGWO.setTaskLevel(1);
 		checkpermission.setTaskLevel(2);
 		getMaterialPreparationchgwo.setTaskLevel(3);
 		checkstationchgwo.setTaskLevel(4);
-		head = CLS;
-		CLS.setnext(checkpermission);
+		head = CHGWO;
+		CHGWO.setnext(checkpermission);
 		checkpermission.setnext(getMaterialPreparationchgwo);
 		getMaterialPreparationchgwo.setnext(checkstationchgwo);
 		Machine.cmand_status = 1;

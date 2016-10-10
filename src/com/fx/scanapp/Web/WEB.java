@@ -98,16 +98,6 @@ public class WEB {
 					}
 					return arraylist;
 				}
-//				SoapObject detail = (SoapObject) result
-//						.getProperty(METHOD+ "Result");
-//
-//				List<String> citys = new ArrayList<String>();
-//				Log.d(TAG, "Result:");
-				// 解析返回信息
-//				for (int i = 0; i < detail.getPropertyCount(); i++) {
-//					citys.add(detail.getProperty(i).toString());
-//					Log.d(TAG, detail.getProperty(i).toString());
-//				}
 				return result.toString();
 			}
 		}catch(SoapFault e){

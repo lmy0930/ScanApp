@@ -9,10 +9,14 @@ import android.os.Message;
 import com.fx.scanapp.Machine;
 import com.fx.scanapp.TaskNode;
 import com.fx.scanapp.DateType.ColParameter;
+import com.fx.scanapp.DateType.Condition;
 import com.fx.scanapp.DateType.EMPType;
+import com.fx.scanapp.DateType.NewDataSet;
 import com.fx.scanapp.Web.WEB;
 import com.fx.scanapp.fileAnalyze.FileAnalyze;
 import com.fx.scanapp.fileAnalyze.JsonAnalyze;
+import com.fx.scanapp.fileAnalyze.XMLAnalyze;
+import com.fx.scanapp.fileAnalyze.XMLException;
 
 public class CommandStationno extends TaskNode {
 	public Handler handler = new Handler() {
@@ -83,14 +87,38 @@ public class CommandStationno extends TaskNode {
 	}
 	public void EditSmtIOStatus(String MasterID,String WOID,int status){
 		 HashMap<String, String> mst = new HashMap<String, String>();
-	     mst.put("MASTERID",MasterID);
-	     mst.put("WOID",WOID); //this.NEW备料表序列号.Split(' ')[0],
-	     mst.put("STATUS", String.valueOf(status));
+	     mst.put("masterId",MasterID);
+	     mst.put("woId",WOID); //this.NEW备料表序列号.Split(' ')[0],
+	     mst.put("status",String.valueOf(status));
 		 WEB.changeURL("http://172.16.173.231/SFIS_WEBSER_TEST/tSmtKpMonitor.asmx");
 		 WEB.setMethod("EditSmtIOStatus");
 		 WEB.WebServices(mst);
 		
 	}
+	
+	public List<Condition>  GetSmtIO(String Master,String WoID)
+	{
+		 HashMap<String, String> mst = new HashMap<String, String>();
+	     mst.put("MASTERID",Master);
+	     mst.put("WOID",WoID); //this.NEW备料表序列号.Split(' ')[0],
+	     String str = JsonAnalyze.Jsoncreat(mst);
+		 mst.clear();
+		 mst.put("Json", str);
+		 WEB.changeURL("http://172.16.173.231/SFIS_WEBSER_TEST/tSmtKpMonitor.asmx");
+		 WEB.setMethod("GetSmtIO_ForMobile");
+		 String rb=WEB.WebServices(mst).toString().split("=")[1].split(";")[0]; 
+		 List<Condition> list;
+		 try {
+			list= XMLAnalyze.getNewDataSet(rb,(new Condition()).getClass().getName());
+			Machine.getInstance().clist=list;
+		} catch (XMLException e) {
+			e.printStackTrace();
+			list=null;
+		}
+		return list;
+		
+	}
+	
 	public boolean WriteLog()
     {                                 
         HashMap<String, String> mst = new HashMap<String, String>();

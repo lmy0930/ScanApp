@@ -37,10 +37,13 @@ public class CommandStationnoCHGWO extends CommandStationno {
 
 							    EditSmtIOStatus(Machine.getInstance().masterID.split(" ")[0],
 							    		Machine.getInstance().masterID.split(" ")[1], ColParameter.已换线);
+								GetSmtIO(Machine.getInstance().masterID.split(" ")[0],
+										Machine.getInstance().masterID.split(" ")[1]);
 							    Machine.getInstance().nextdo+="\n换线完成";
 								Machine.getInstance().nextdo+="\n正在初始化..\n请刷作业代码";
 								Machine.getInstance().stationno.remove(0);
 								Machine.cmand_status = 0;
+				                    
 							}
 					}
 					else{
@@ -73,7 +76,7 @@ public class CommandStationnoCHGWO extends CommandStationno {
         mst.put("LOTID", Machine.getInstance().material.split("\\|")[3]); //arr料盘序列号[3],
         mst.put("KPNUMBER", Machine.getInstance().material.split("\\|")[0]);//_dr["kpnumber"].ToString(),
         // inputtime = Convert.ToDateTime(smtkpmonitor.GetServerDateTime()),// DateTime.Now,
-        mst.put("DATA", ColParameter.changeclass.toUpperCase());
+        mst.put("DATA", ColParameter.changeline.toUpperCase());
         mst.put("VENDERCODE", Machine.getInstance().material.split("\\|")[1]); //arr料盘序列号[1],
         mst.put("LOTQTY", Machine.getInstance().material.split("\\|")[4]);  //int.Parse(arr料盘序列号[4]),
         mst.put("MODELNAME", Machine.getInstance().SmtKpMaterialPreparation.get(0).getPARTNUMBER());

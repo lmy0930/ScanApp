@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 
 import com.fx.scanapp.Machine;
 import com.fx.scanapp.TaskNode;
@@ -63,6 +64,7 @@ public class CommandCheckPermission extends TaskNode{
 									&&master.get(0).ROLECAPTION.equalsIgnoreCase("生产主管")) {
 								FileAnalyze.WriteINI("0");
 								Machine.getInstance().nextdo = "主管权限正确\n请继续下一步指令";
+								Log.v("WEB", "主管权限0，next="+Machine.cmand_bstatus);
 								Machine.cmand_status=Machine.cmand_bstatus;
 							} else {
 								Machine.getInstance().nextdo = "主管权限错误3\n请刷入正确的主管权限";

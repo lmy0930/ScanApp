@@ -7,7 +7,6 @@ public class CommandGetMaterialPreparationCHGWO extends
 	
 	@Override
 	public String CheckSmtIO() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
