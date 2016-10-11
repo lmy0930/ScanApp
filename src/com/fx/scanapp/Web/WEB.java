@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.apache.http.HttpException;
+import org.apache.http.conn.HttpHostConnectException;
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.SoapFault;
 import org.ksoap2.serialization.SoapObject;
@@ -32,14 +34,13 @@ public class WEB {
 
 	private static String returntype;// 返回值类型；
 
-	//HashMap<String, String> map = new HashMap<String, String>();
-
 	public static void setMethod(String Method) {
 		METHOD = Method;
 		SOAPACTION = PACE + METHOD;
 		Log.d(TAG, "setMethod:"+METHOD);
 	}
 	
+	@SuppressWarnings("hiding")
 	public static Object WebServices(HashMap<String,String> map){
         
 		//打印输入参数信息
@@ -68,15 +69,20 @@ public class WEB {
 			e1.printStackTrace();
 			Log.d(TAG, e1.getMessage());
 			return null;
+		}catch (HttpHostConnectException e) {
+			e.printStackTrace();
+			Log.d(TAG, e.getMessage());
+			return null;
 		}catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 			Log.d(TAG, e1.getMessage());
 			return null;
 		} catch (XmlPullParserException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 			Log.d(TAG, e1.getMessage());
+			return null;
+		}catch (Exception e) {
+			Log.d(TAG, e.getMessage());
 			return null;
 		}
 		try {
@@ -101,7 +107,6 @@ public class WEB {
 				return result.toString();
 			}
 		}catch(SoapFault e){
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			Log.d(TAG, e.getMessage());
 			return null;

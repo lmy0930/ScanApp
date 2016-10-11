@@ -51,7 +51,7 @@ public class CommandCHGWO extends TaskNode {
 			@Override
 			public void run() {
 				if (FileAnalyze.ReadINI()) {
-					Machine.cmand_bstatus=1;
+					Machine.cmand_bstatus=0;
 					Machine.cmand_status = 2;
 					Machine.getInstance().nextdo = "请刷主管权限";
 				} else {    
@@ -147,7 +147,6 @@ public class CommandCHGWO extends TaskNode {
 				e.printStackTrace();
 				return e.toString();
 			}catch (Exception e) {
-				// TODO: handle exception
 				return e.toString();
 			}
             }

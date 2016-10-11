@@ -103,18 +103,19 @@ public class CommandCheckStation extends TaskNode {
 
 	}
 	
+	@SuppressWarnings("unchecked")
 	public String addInformation(){
 		String Err;
 		WEB.changeURL("http://172.16.173.231/SFIS_WEBSER_TEST/tSmtKpMonitor.asmx");
 		WEB.setMethod("CheckSCARCITYStation");
 		HashMap map = new HashMap<String, String>();
-		map.put("MASTERID", Machine.getInstance().masterID.split(" ")[0]);
-		map.put("WOID",Machine.getInstance().masterID.split(" ")[1]);
-		map.put("MACHINE",Machine.getInstance().clist.get(0).getMACHINEID());
-		map.put("STATION",msg.substring(0, 2));
+		map.put("Masterid", Machine.getInstance().masterID.split(" ")[0]);
+		map.put("woId",Machine.getInstance().masterID.split(" ")[1]);
+		map.put("Machine",Machine.getInstance().clist.get(0).getMACHINEID());
+		map.put("Station",msg.substring(0, 2));
 		String rb;
 		try {
-			rb = (String) WEB.WebServices(map).toString().split("=")[1]
+			rb =  WEB.WebServices(map).toString().split("=")[1]
 					.split(";")[0];
             if(!rb.equalsIgnoreCase("true")){
             	Err = "错误!!一个车台同时只能有一个缺料信息";

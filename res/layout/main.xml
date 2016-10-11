@@ -16,7 +16,7 @@
      <View 
          android:layout_width="fill_parent"
          android:layout_height="30dip"
-         android:background="#FF8C00"
+         android:background="@drawable/tit"
          />
         <TextView
             android:id="@+id/textView1"

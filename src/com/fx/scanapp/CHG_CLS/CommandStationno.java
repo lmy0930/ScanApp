@@ -87,11 +87,14 @@ public class CommandStationno extends TaskNode {
 	}
 	public void EditSmtIOStatus(String MasterID,String WOID,int status){
 		 HashMap<String, String> mst = new HashMap<String, String>();
-	     mst.put("masterId",MasterID);
-	     mst.put("woId",WOID); //this.NEW备料表序列号.Split(' ')[0],
-	     mst.put("status",String.valueOf(status));
+	     mst.put("MASTERID",MasterID);
+	     mst.put("WOID",WOID); //this.NEW备料表序列号.Split(' ')[0],
+	     mst.put("STATUS",String.valueOf(status));
+	     String str = JsonAnalyze.Jsoncreat(mst);
+		 mst.clear();
+		 mst.put("Json", str);
 		 WEB.changeURL("http://172.16.173.231/SFIS_WEBSER_TEST/tSmtKpMonitor.asmx");
-		 WEB.setMethod("EditSmtIOStatus");
+		 WEB.setMethod("EditSmtIOStatus_ForMobile");
 		 WEB.WebServices(mst);
 		
 	}
